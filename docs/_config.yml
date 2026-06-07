@@ -1,0 +1,23 @@
+theme: jekyll-theme-cayman
+title: autonomous.tw
+description: AI 驅動的繁體中文每日新聞簡報 — 本地 LLM 優先，資訊自主
+baseurl: "/autonomous.tw"
+url: "https://wolfgangyu7601.github.io"
+
+# Build settings
+markdown: kramdown
+future: true
+plugins:
+  - jekyll-feed
+feed:
+  path: feed.xml
+exclude:
+  - ".github"
+  - "node_modules"
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"

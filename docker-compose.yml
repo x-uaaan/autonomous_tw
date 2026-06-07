@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  autonomous-tw:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: autonomous-tw:latest
+    container_name: autonomous-tw
+    volumes:
+      # Persistent data directory (config, summaries, seen state)
+      - ./data:/app/data
+      # Environment variables (API keys)
+      - ./.env:/app/.env:ro
+      # Git credentials for pushing to GitHub Pages
+      - ${HOME}/.ssh:/root/.ssh:ro
+      # Optional: local Ollama socket (if running Ollama on host)
+      # - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - OLLAMA_HOST=host.docker.internal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: cron
+    restart: unless-stopped

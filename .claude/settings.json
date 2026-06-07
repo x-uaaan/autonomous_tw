@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/wolfgang/.claude -type f \\\\\\( -name \"*plan*\" -o -name \"*todo*\" -o -name \"*PLAN*\" -o -name \"*.plan*\" -o -name \"*roadmap*\" \\\\\\) 2>/dev/null; ls -la /Users/wolfgang/.claude/projects/-Users-wolfgang-Projects-autonomous-tw/ 2>/dev/null)",
+      "Read(//Users/wolfgang/.claude/**)",
+      "Bash(python3 -c \"import sys,json; [print\\(json.dumps\\({k:v for k,v in json.loads\\(l\\).items\\(\\) if k in \\('role','content'\\) and v}, ensure_ascii=False\\)[:500]\\) for l in sys.stdin]\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python3)"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+# autonomous.tw crontab — runs every 6 hours
+0 */6 * * * cd /app && uv run autonomous-tw --hours 6 >> /var/log/autonomous-tw.log 2>&1
+# Cleanup old logs daily
+0 3 * * * find /var/log -name "autonomous-tw-*.log" -mtime +7 -delete
