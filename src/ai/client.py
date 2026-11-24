@@ -5,7 +5,12 @@ import re
 from abc import ABC, abstractmethod
 from typing import Optional
 from openai import AsyncAzureOpenAI, AsyncOpenAI
-from anthropic import AsyncAnthropic
+try:
+    from anthropic import AsyncAnthropic
+except ImportError:
+    AsyncOpenAI = None
+AsyncAzureOpenAI = None
+
 from google import genai
 from google.genai import types
 

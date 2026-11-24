@@ -1,0 +1,28 @@
+name: Daily Horizon Briefing
+
+on:
+  schedule:
+    # Runs every day at 08:00 AM Malaysia Time (00:00 UTC)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Lets you click "Run workflow" manually to test
+
+jobs:
+  run-briefing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install .
+
+      - name: Run Horizon and push to DingTalk
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          HORIZON_WEBHOOK_URL: ${{ secrets.HORIZON_WEBHOOK_URL }}
+        run: python -m src.main
